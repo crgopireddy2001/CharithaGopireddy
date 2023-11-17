@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: #ff0000;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="jobApplicationForm">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+        <div id="fullNameError" class="error-message"></div>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <div id="emailError" class="error-message"></div>
+
+        <label for="resume">Resume (PDF or Word):</label>
+        <input type="file" id="resume" name="resume" accept=".pdf, .doc, .docx" required>
+        <div id="resumeError" class="error-message"></div>
+
+        <label for="comments">Additional Comments:</label>
+        <textarea id="comments" name="comments" rows="4"></textarea>
+
+        <button type="button" onclick="validateForm()">Submit Application</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            var isValid = true;
+
+            // Reset error messages
+            document.getElementById('fullNameError').textContent = '';
+            document.getElementById('emailError').textContent = '';
+            document.getElementById('resumeError').textContent = '';
+
+            // Validation for Full Name
+            var fullName = document.getElementById('fullName').value;
+            if (!fullName) {
+                document.getElementById('fullNameError').textContent = 'Full Name is required';
+                isValid = false;
+            }
+
+            // Validation for Email
+            var email = document.getElementById('email').value;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !email.match(emailRegex)) {
+                document.getElementById('emailError').textContent = 'Enter a valid email address';
+                isValid = false;
+            }
+
+            // Validation for Resume
+            var resume = document.getElementById('resume').value;
+            var allowedExtensions = /(\.pdf|\.doc|\.docx)$/i;
+            if (!resume || !resume.match(allowedExtensions)) {
+                document.getElementById('resumeError').textContent = 'Upload a valid PDF or Word document';
+                isValid = false;
+            }
+
+            // If the form is not valid, display an alert
+            if (!isValid) {
+                alert('Please fix the errors before submitting.');
+            } else {
+                // If the form is valid, you can proceed with form submission logic here
+                alert('Form is valid. Submitting...');
+            }
+        }
+    </script>
+
+</body>
+</html>
