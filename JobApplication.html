@@ -77,19 +77,18 @@
         function validateForm() {
             var isValid = true;
 
-            // Reset error messages
             document.getElementById('fullNameError').textContent = '';
             document.getElementById('emailError').textContent = '';
             document.getElementById('resumeError').textContent = '';
 
-            // Validation for Full Name
+   
             var fullName = document.getElementById('fullName').value;
             if (!fullName) {
                 document.getElementById('fullNameError').textContent = 'Full Name is required';
                 isValid = false;
             }
 
-            // Validation for Email
+         
             var email = document.getElementById('email').value;
             var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!email || !email.match(emailRegex)) {
@@ -97,7 +96,7 @@
                 isValid = false;
             }
 
-            // Validation for Resume
+           
             var resume = document.getElementById('resume').value;
             var allowedExtensions = /(\.pdf|\.doc|\.docx)$/i;
             if (!resume || !resume.match(allowedExtensions)) {
@@ -105,11 +104,11 @@
                 isValid = false;
             }
 
-            // If the form is not valid, display an alert
+            
             if (!isValid) {
                 alert('Please fix the errors before submitting.');
             } else {
-                // If the form is valid, you can proceed with form submission logic here
+               
                 alert('Form is valid. Submitting...');
             }
         }

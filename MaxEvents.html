@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>What is HTML</h2>
+    <p>HyperText Markup Language</p>
+    <div>
+        <p>Click Event</p>
+        <button id="clickButton">Click me</button>
+        <script>
+            document.getElementById('clickButton').addEventListener('click', function() {
+                alert('Button clicked!');
+            });
+        </script>
+    </div>
+    <div>
+        <p>input change event</p>
+        <input type="text" id="myInput" placeholder="Type something">
+        <script>
+            document.getElementById('myInput').addEventListener('change', function() {
+                console.log('Input value changed!');
+            });
+        </script>
+    </div>
+    <div>
+    <p>Load Event with Input Change</p>
+
+    <input type="text" id="Input">
+
+    <script>
+        window.addEventListener('load', function() {
+            console.log('Page loaded!');
+
+            var inputElement = document.getElementById('Input');
+
+            inputElement.addEventListener('input', function() {
+                console.log('Input changed!');
+            });
+        });
+    </script>
+    </div>
+    <div>
+    <p>Submit Event</p>
+
+    <form id="myForm">
+        <input type="text" name="inputField">
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            console.log('Form submitted!');
+        });
+    </script>
+</div>
+<div>
+    <p> Image load Event</p>
+
+
+    <img src="c:\Users\Charitha\OneDrive\Desktop\Mycode\codingpart\images\B.png" alt="My Image" id="myImage" width="400" height="300">
+
+    <script>
+        document.getElementById('myImage').addEventListener('load', function() {
+            console.log('Image loaded!');
+        });
+    </script>
+</div>
+<div>
+    <p>Image Load and Error Events</p>
+    <img src="C:\Users\Charitha\OneDrive\Desktop\Mycode\codingpart\images\work.jpg" alt="My Image" id="image" width="400" height="300">
+
+    <script>
+        document.getElementById('image').addEventListener('load', function() {
+            console.log('Image is loaded!');
+        });
+
+        document.getElementById('image').addEventListener('error', function() {
+            console.log('Image failed to load!');
+        });
+    </script>
+
+</div>
+</body>
+</html>
